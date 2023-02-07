@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Expense Tracker </title>
+</head>
+<body>
+    <div class="container">
+        <form action="/" method="post">
+            <input type="text" placeholder="expense" name="expense">
+            <input type="text" placeholder="description" name="description">
+            <select name="category">
+                <option value="movie">Movie</option>
+                <option value="dinner">Dinner</option>
+                <option value="fuel">Fuel</option>
+                <option value="ticket">Ticket</option>
+            </select>
+            <input type="submit" placeholder="submit">
+        </form>
+    </div>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Expense</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Update</th>
+            <th>>Delete</th>
+        </tr>
+        <% if (users.length > 0) { %> 
+ <% for (var i=0 ; i<users.length;i++) { %>        
+    <tr>
+        <td><%= users[i].id %></td>
+        <td><%= users[i].expense %></td>
+        <td><%= users[i].description %></td>
+        <td><%= users[i].category %></td>
+        <td><a href="/update?id=<%= users[i].id %>" target="_blank">Update</a></td>
+        <td><a href="/delete?id=<%= users[i].id %>" target="_blank">Delete</a></td>
+    </tr>
+ <% } %>    
+        <% } else { %> 
+<h1>data not found</h1>
+        <% } %>     
+    </table>
+</body>
+</html>
